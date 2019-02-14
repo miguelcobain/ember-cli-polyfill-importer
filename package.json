@@ -17,9 +17,8 @@
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint .",
     "start": "ember serve",
-    "test": "ember test",
     "test:all": "ember try:each",
-    "test:mocha": "mocha",
+    "test": "mocha",
     "test:precook": "node node_modules/ember-cli-addon-tests/scripts/precook-node-modules.js"
   },
   "dependencies": {
