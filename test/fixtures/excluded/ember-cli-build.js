@@ -1,5 +1,6 @@
 'use strict';
 
+// eslint-disable-next-line
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function(defaults) {
@@ -8,11 +9,7 @@ module.exports = function(defaults) {
     polyfills: {
       'matchmedia-polyfill': {
         files: ['matchMedia.js'],
-        caniuse: 'matchmedia',
-        shouldImport() {
-          return false;
-        },
-        browsers: ['last 1 Chrome versions']
+        caniuse: 'matchmedia'
       }
     }
   });
