@@ -35,6 +35,7 @@ Just install your polyfill npm package and add configuration as follows:
 let app = new EmberApp(defaults, {
   // Add options here
   polyfills: {
+    // key is the package name
     'matchmedia-polyfill': {
       files: ['matchMedia.js'], // files array relative to package's root
       caniuse: 'matchmedia' // can i use test name
@@ -65,13 +66,14 @@ let app = new EmberApp(defaults, {
 ```
 
 You can also use this addon as another addon dependency. To do that, make sure that `ember-cli-polyfill-importer`
-is in your `dependencies` and not `devDependencies` and provide configuration in your `index.js` file like:
+and the polyfill npm package are in your `dependencies` and not `devDependencies` and provide configuration in your `index.js` file like:
 
 ```js
 // index.js
 module.exports = {
   name: require('./package').name,
   options: {
+    // key is the package name
     'matchmedia-polyfill': {
       files: ['matchMedia.js'], // files array relative to package's root
       caniuse: 'matchmedia' // can i use test name
