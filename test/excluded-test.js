@@ -3,6 +3,7 @@
 
 const chai = require('chai');
 const expect = chai.expect;
+chai.use(require('chai-fs'));
 const AddonTestApp = require('ember-cli-addon-tests').AddonTestApp;
 
 describe('Exclude polyfill', function() {
