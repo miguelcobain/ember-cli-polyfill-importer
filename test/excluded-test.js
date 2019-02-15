@@ -4,7 +4,6 @@
 const chai = require('chai');
 const expect = chai.expect;
 const AddonTestApp = require('ember-cli-addon-tests').AddonTestApp;
-const fetch = require('node-fetch');
 
 describe('Exclude polyfill', function() {
   this.timeout(400000);
@@ -14,16 +13,10 @@ describe('Exclude polyfill', function() {
   before(async function() {
     app = new AddonTestApp();
     await app.create('excluded');
-    await app.startServer();
-  });
-
-  after(async function() {
-    await app.stopServer();
+    await app.runEmberCommand('build');
   });
 
   it('skips polyfill for modern browsers', async function() {
-    let response = await fetch('http://localhost:49741/assets/vendor.js');
-    let body = await response.text();
-    expect(body).to.not.contain('matchMedia() polyfill');
+    expect(app.filePath('dist/assets/vendor.js')).to.not.have.content.that.match(/matchMedia\(\) polyfill/);
   });
 });

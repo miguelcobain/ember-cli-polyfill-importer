@@ -1,10 +1,11 @@
 'use strict';
 
 // eslint-disable-next-line
-const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
-  let app = new EmberAddon(defaults, {
+  let app = new EmberApp(defaults, {
+    tests: false,
     // Add options here
     polyfills: {
       'matchmedia-polyfill': {
