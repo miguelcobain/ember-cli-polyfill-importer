@@ -4,6 +4,14 @@ const path = require('path');
 const caniuse = require('caniuse-api');
 const browserslist = require('browserslist');
 
+const FASTBOOT_TRANSFORMATION_OPTION = {
+  using: [
+    {
+      transformation: 'fastbootShim',
+    }
+  ]
+};
+
 module.exports = {
   name: require('./package').name,
 
@@ -16,15 +24,17 @@ module.exports = {
     let options = this.getOptions();
     let importer = this.import ? this : findHost(this);
     let browsers = this.project.targets && this.project.targets.browsers;
+    let hasFastboot = this.project.findAddonByName('ember-cli-fastboot');
 
     Object.keys(options).forEach((packageName) => {
       let packageOptions = options[packageName];
 
       if (this.shouldImportPackage(packageOptions, browsers)) {
         let files = packageOptions.files || [];
+        let importOptions = Object.assign({}, hasFastboot ? FASTBOOT_TRANSFORMATION_OPTION : {}, packageOptions.importOptions || {});
 
         files.forEach((f) => {
-          importer.import(path.join('node_modules', packageName, f), packageOptions.importOptions);
+          importer.import(path.join('node_modules', packageName, f), importOptions);
         });
       }
     });

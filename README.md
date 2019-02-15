@@ -9,6 +9,8 @@ Ember-CLI addon to add a polyfills based on caniuse tests, specific browsers (br
 caniuse and browserlist tests are made against app's `targets.js`.
 If those tests fail, the polyfill/script won't be imported.
 
+It will also use the fastbootShim transformation while importing, if `ember-cli-fastboot` is installed in the host app.
+
 
 Compatibility
 ------------------------------------------------------------------------------
@@ -51,14 +53,7 @@ let app = new EmberApp(defaults, {
       files: ['browser.js'],
       browsers: ['ie 9', 'chrome 52'] // browserlist array of browsers query in which to include the polyfill
       // optionally, you can define the options to use when calling app.import
-      // very useful to import polyfills in a fastboot safe way like in this example
-      importOptions: {
-        using: [
-          {
-            transformation: 'fastbootShim',
-          }
-        ]
-      }
+      importOptions: { }
     }
   }
 });
@@ -89,14 +84,7 @@ module.exports = {
       files: ['browser.js'],
       browsers: ['ie 9', 'chrome 52'] // browserlist array of browsers query in which to include the polyfill
       // optionally, you can define the options to use when calling app.import
-      // very useful to import polyfills in a fastboot safe way like in this example
-      importOptions: {
-        using: [
-          {
-            transformation: 'fastbootShim',
-          }
-        ]
-      }
+      importOptions: { }
     }
   }
 };
