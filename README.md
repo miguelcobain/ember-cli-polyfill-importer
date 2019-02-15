@@ -1,5 +1,8 @@
-ember-cli-polyfill-importer
-==============================================================================
+# ember-cli-polyfill-importer
+
+[![Build Status](https://travis-ci.org/miguelcobain/ember-cli-polyfill-importer.svg?branch=master)](https://travis-ci.org/miguelcobain/ember-cli-polyfill-importer)
+[![Ember Observer Score](https://emberobserver.com/badges/ember-cli-polyfill-importer.svg)](https://emberobserver.com/addons/ember-cli-polyfill-importer)
+[![npm version](https://badge.fury.io/js/ember-cli-polyfill-importer.svg)](https://badge.fury.io/js/ember-cli-polyfill-importer)
 
 Ember-CLI addon to add a polyfills based on caniuse tests, specific browsers (browserlist) or custom logic.
 
