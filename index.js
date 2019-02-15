@@ -24,7 +24,7 @@ module.exports = {
         let files = packageOptions.files || [];
 
         files.forEach((f) => {
-          importer.import(path.join('node_modules', packageName, f));
+          importer.import(path.join('node_modules', packageName, f), packageOptions.importOptions);
         });
       }
     });

@@ -13,7 +13,7 @@ If those tests fail, the polyfill/script won't be imported.
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember CLI v2.15 or above
+* Ember CLI v2.15 or above (2.16 is required for using app.import transformation options)
 
 
 Installation
@@ -49,6 +49,15 @@ let app = new EmberApp(defaults, {
     'element-closest': {
       files: ['browser.js'],
       browsers: ['ie 9', 'chrome 52'] // browserlist array of browsers query in which to include the polyfill
+      // optionally, you can define the options to use when calling app.import
+      // very useful to import polyfills in a fastboot safe way like in this example
+      importOptions: {
+        using: [
+          {
+            transformation: 'fastbootShim',
+          }
+        ]
+      }
     }
   }
 });
@@ -77,6 +86,15 @@ module.exports = {
     'element-closest': {
       files: ['browser.js'],
       browsers: ['ie 9', 'chrome 52'] // browserlist array of browsers query in which to include the polyfill
+      // optionally, you can define the options to use when calling app.import
+      // very useful to import polyfills in a fastboot safe way like in this example
+      importOptions: {
+        using: [
+          {
+            transformation: 'fastbootShim',
+          }
+        ]
+      }
     }
   }
 };
