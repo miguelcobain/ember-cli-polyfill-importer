@@ -21,7 +21,7 @@ module.exports = {
       let packageOptions = options[packageName];
 
       if (this.shouldImportPackage(packageOptions, browsers)) {
-        let files = packageOptions.file || [];
+        let files = packageOptions.files || [];
 
         files.forEach((f) => {
           importer.import(path.join('node_modules', packageName, f));
@@ -50,7 +50,7 @@ module.exports = {
     let browserlistTest = shouldIncludeBrowsers.some((b) => {
       return targetBrowsers.includes(b);
     });
-    console.log('will import', caniuseTest || browserlistTest || shouldImportTest);
+
     return caniuseTest || browserlistTest || shouldImportTest;
   },
 

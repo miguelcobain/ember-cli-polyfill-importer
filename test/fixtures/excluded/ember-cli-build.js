@@ -11,6 +11,16 @@ module.exports = function(defaults) {
       'matchmedia-polyfill': {
         files: ['matchMedia.js'],
         caniuse: 'matchmedia'
+      },
+      'raf-polyfill': {
+        files: ['raf.js'],
+        shouldImport() {
+          return false;
+        }
+      },
+      'element-closest': {
+        files: ['browser.js'],
+        browsers: ['ie 9', 'chrome 52']
       }
     }
   });

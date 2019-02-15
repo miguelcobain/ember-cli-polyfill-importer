@@ -1,7 +1,7 @@
 /* eslint-env node */
 module.exports = {
   browsers: [
-    'ie 9',
+    'ie >= 9',
     'last 1 Edge versions',
     'last 1 Chrome versions',
     'last 1 Firefox versions',

@@ -17,7 +17,15 @@ describe('Include polyfill', function() {
     await app.runEmberCommand('build');
   });
 
-  it('includes polyfill for IE', async function() {
+  it('includes polyfill with caniuse test', async function() {
     expect(app.filePath('dist/assets/vendor.js')).to.have.content.that.match(/matchMedia\(\) polyfill/);
+  });
+
+  it('includes polyfill with shouldImport test', async function() {
+    expect(app.filePath('dist/assets/vendor.js')).to.have.content.that.match(/window\.requestAnimationFrame = function/);
+  });
+
+  it('includes polyfill with browserlist test', async function() {
+    expect(app.filePath('dist/assets/vendor.js')).to.have.content.that.match(/t\.closest=function\(/);
   });
 });

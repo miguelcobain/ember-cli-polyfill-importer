@@ -16,7 +16,15 @@ describe('Exclude polyfill', function() {
     await app.runEmberCommand('build');
   });
 
-  it('skips polyfill for modern browsers', async function() {
+  it('skips polyfill with caniuse test', async function() {
     expect(app.filePath('dist/assets/vendor.js')).to.not.have.content.that.match(/matchMedia\(\) polyfill/);
+  });
+
+  it('skips polyfill with shouldImport test', async function() {
+    expect(app.filePath('dist/assets/vendor.js')).to.not.have.content.that.match(/window\.requestAnimationFrame = function/);
+  });
+
+  it('skips polyfill with browserlist test', async function() {
+    expect(app.filePath('dist/assets/vendor.js')).to.not.have.content.that.match(/t\.closest=function\(/);
   });
 });

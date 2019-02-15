@@ -5,16 +5,6 @@ const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 module.exports = function(defaults) {
   let app = new EmberAddon(defaults, {
     // Add options here
-    polyfills: {
-      'matchmedia-polyfill': {
-        files: ['matchMedia.js'],
-        caniuse: 'matchmedia',
-        shouldImport() {
-          return false;
-        },
-        browsers: ['last 1 Chrome versions']
-      }
-    }
   });
 
   /*
