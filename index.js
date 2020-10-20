@@ -34,7 +34,9 @@ module.exports = {
         let importOptions = Object.assign({}, hasFastboot ? FASTBOOT_TRANSFORMATION_OPTION : {}, packageOptions.importOptions || {});
 
         files.forEach((f) => {
-          importer.import(path.join('node_modules', packageName, f), importOptions);
+          let packagePath = path.dirname(require.resolve(packageName + '/package.json'));
+          let filePath = path.join(packagePath, f);
+          importer.import(filePath, importOptions);
         });
       }
     });
