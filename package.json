@@ -26,7 +26,8 @@
   },
   "dependencies": {
     "browserslist": "^4.14.5",
-    "caniuse-api": "^3.0.0"
+    "caniuse-api": "^3.0.0",
+    "resolve": "^1.18.1"
   },
   "devDependencies": {
     "@ember/optional-features": "^0.7.0",

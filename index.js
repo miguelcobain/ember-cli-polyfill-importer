@@ -1,5 +1,6 @@
 'use strict';
 
+const resolve = require('resolve');
 const path = require('path');
 const caniuse = require('caniuse-api');
 const browserslist = require('browserslist');
@@ -34,7 +35,7 @@ module.exports = {
         let importOptions = Object.assign({}, hasFastboot ? FASTBOOT_TRANSFORMATION_OPTION : {}, packageOptions.importOptions || {});
 
         files.forEach((f) => {
-          let packagePath = path.dirname(require.resolve(packageName + '/package.json'));
+          let packagePath = path.dirname(resolve.sync(`${packageName}/package.json`, { basedir: __dirname }));
           let filePath = path.join(packagePath, f);
           importer.import(filePath, importOptions);
         });
