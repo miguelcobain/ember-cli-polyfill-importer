@@ -13,7 +13,10 @@ describe('Include polyfill', function() {
 
   before(async function() {
     app = new AddonTestApp();
-    await app.create('included');
+    await app.create('included', {
+      emberVersion: '~3.7.3',
+      emberDataVersion: '^3.7.0'
+    });
     await app.runEmberCommand('build');
   });
 

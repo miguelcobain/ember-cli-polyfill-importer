@@ -13,7 +13,10 @@ describe('Exclude polyfill', function() {
 
   before(async function() {
     app = new AddonTestApp();
-    await app.create('excluded');
+    await app.create('excluded', {
+      emberVersion: '~3.7.3',
+      emberDataVersion: '^3.7.0'
+    });
     await app.runEmberCommand('build');
   });
 
